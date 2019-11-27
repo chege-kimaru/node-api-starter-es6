@@ -20,6 +20,8 @@ class Send {
     } else if (err instanceof errors.AuthenticationError
         || err instanceof errors.AuthorizationError) {
       res.status(401).json({ error: err.message, status: 'error' });
+    } else if (err instanceof errors.ForbiddenError) {
+      res.status(403).json({error: err.message, status: 'error'});
     } else {
       res.status(500).json({
         error: process.env.NODE_ENV === 'production' ? 'Internal Server Error' : err.message,

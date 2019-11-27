@@ -35,10 +35,18 @@ class ResourceNotFoundError extends BaseError {
   }
 }
 
+class ForbiddenError extends BaseError {
+  constructor(message) {
+    super(message);
+    this.message = message || 'Forbidden to access resource';
+  }
+}
+
 
 module.exports = {
   OperationNotAllowedError,
   AuthenticationError,
   AuthorizationError,
   ResourceNotFoundError,
+  ForbiddenError
 };
